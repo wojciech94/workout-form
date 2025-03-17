@@ -1,0 +1,37 @@
+.label {
+	color: #000853;
+	font-size: 16px;
+	border-radius: 1px;
+	line-height: 1;
+}
+
+.input,
+.textarea {
+	height: 48px;
+	background-color: #fff;
+	border: 1px solid var(--color-custom-lightpurple);
+	border-radius: 8px;
+	padding: 0 16px;
+	outline: none !important;
+	color: var(--color-custom-darkblue);
+}
+
+.input:disabled,
+.textarea:disabled {
+	border-color: var(--color-custom-lightpurple);
+}
+
+.input:focus,
+.textarea:focus {
+	border: 2px solid var(--color-custom-purple);
+	background-color: #faf9fa;
+}
+
+.input.error {
+	background-color: #feecec;
+	border: 2px solid var(--color-custom-danger);
+}
+
+.input.error + div {
+	color: var(--color-custom-darkblue);
+}
