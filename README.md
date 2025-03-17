@@ -1,54 +1,40 @@
-# React + TypeScript + Vite
+# 🏋️ Workout Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📅 **Workout Planner** to formularz który pozwala użytkownikom planować swoje treningi.
 
-Currently, two official plugins are available:
+🚀 [Zobacz na żywo](https://workout-form-bice.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ⚡ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+✅ **Frontend:** React, TypeScript, Tailwind CSS  
+✅ **API:** https://api-ninjas.com/api/holidays
+✅ **Inne:** Vite, MUI Slider
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🛠 Instalacja i uruchomienie
+
+### 1️⃣ Klonowanie repozytorium
+
+```sh
+git clone https://github.com/wojciech94/workout-form.git
+cd workout-form
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2️⃣ Instalacja zależności
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```sh
+npm install
 ```
+
+_(lub `yarn install` / `pnpm install`)_
+
+### 3️⃣ Uruchomienie aplikacji
+
+```sh
+npm run dev
+```
+
+Domyślnie aplikacja uruchomi się na `http://localhost:5173/`.
