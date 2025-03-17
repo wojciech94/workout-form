@@ -35,6 +35,7 @@ function App() {
 	const [formData, setFormData] = useState<FormDataType>(initialFormData)
 	const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 	const [selectedTime, setSelectedTime] = useState<string>('12:00')
+	const [isClosed, setIsClosed] = useState(true)
 	const [file, setFile] = useState<File | null>(null)
 	const [age, setAge] = useState(28)
 
@@ -121,7 +122,6 @@ function App() {
 			},
 		}))
 	}
-
 	return (
 		<>
 			{holidays && (
@@ -156,8 +156,10 @@ function App() {
 						setSelectedDate={setSelectedDate}
 						selectedTime={selectedTime}
 						setSelectedTime={setSelectedTime}
+						isClosed={isClosed}
+						setIsClosed={setIsClosed}
 					/>
-					<Button disabled={!selectedDate || !file || !isFormDataValid(formData)}>Send application</Button>
+					<Button disabled={!selectedDate || isClosed || !file || !isFormDataValid(formData)}>Send application</Button>
 				</form>
 			)}
 		</>

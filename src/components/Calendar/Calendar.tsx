@@ -10,13 +10,21 @@ type Props = {
 	setSelectedDate: React.Dispatch<SetStateAction<Date | null>>
 	selectedTime: String
 	setSelectedTime: React.Dispatch<SetStateAction<string>>
+	isClosed: boolean
+	setIsClosed: React.Dispatch<SetStateAction<boolean>>
 }
 
-export const Calendar = ({ holidays, setSelectedDate, selectedTime, setSelectedTime }: Props) => {
+export const Calendar = ({
+	holidays,
+	setSelectedDate,
+	selectedTime,
+	setSelectedTime,
+	isClosed,
+	setIsClosed,
+}: Props) => {
 	const [currentDate, setCurrentDate] = useState(new Date())
 	const [currentHolidays, setCurrentHolidays] = useState<HolidayType[] | null>(null)
 	const [selectedDay, setSelectedDay] = useState<Number | null>(null)
-	const [closed, setIsClosed] = useState(true)
 	const [holidayInfo, setHolidayInfo] = useState<String | null>(null)
 
 	const daysOfWeek = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
@@ -72,9 +80,9 @@ export const Calendar = ({ holidays, setSelectedDate, selectedTime, setSelectedT
 
 	const days = getDaysInMonth(currentDate)
 
-	const handleSetSelectedDay = (day: number | null, isClosed: boolean) => {
+	const handleSetSelectedDay = (day: number | null, closed: boolean) => {
 		setSelectedDay(day)
-		setIsClosed(isClosed)
+		setIsClosed(closed)
 		if (day) {
 			setHolidayInfo(getHolidayInfo(day, currentHolidays))
 			const prevDate = currentDate
@@ -116,7 +124,7 @@ export const Calendar = ({ holidays, setSelectedDate, selectedTime, setSelectedT
 
 							{days.map((day, index) => {
 								const isSunday = (index + 1) % 7 === 0
-								const isClosed = isSunday || checkNationalHoliday(day, currentHolidays)
+								const closed = isSunday || checkNationalHoliday(day, currentHolidays)
 
 								return (
 									<div
@@ -125,9 +133,9 @@ export const Calendar = ({ holidays, setSelectedDate, selectedTime, setSelectedT
               h-8 w-8 text-center flex items-center justify-center justify-self-center text-sm rounded-full text-custom-darkblue
               ${day === null ? 'invisible' : 'cursor-pointer'}
               ${day === selectedDay ? 'bg-custom-purple text-white' : 'hover:bg-custom-lightpurple'}
-              ${isClosed ? 'text-gray-400' : ''} 
+              ${closed ? 'text-gray-400' : ''} 
             `}
-										onClick={() => handleSetSelectedDay(day, isClosed)}>
+										onClick={() => handleSetSelectedDay(day, closed)}>
 										{day}
 									</div>
 								)
@@ -135,7 +143,7 @@ export const Calendar = ({ holidays, setSelectedDate, selectedTime, setSelectedT
 						</div>
 					</div>
 				</div>
-				{selectedDay && !closed && (
+				{selectedDay && !isClosed && (
 					<div className='flex flex-col gap-2'>
 						<h3 className='leading-none'>Time</h3>
 						<div className='flex flex-wrap gap-2 sm:flex-col'>
